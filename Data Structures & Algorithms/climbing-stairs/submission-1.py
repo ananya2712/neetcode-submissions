@@ -1,0 +1,14 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        memo = [-1] * n
+
+        def memoisation(i):
+            if i >= n:
+                return i == n # true = 1, false = 0.
+                # when i=n, return 1, else return 0 when out of bounds.
+            if memo[i] !=-1:
+                return memo[i]
+            memo[i] = memoisation(i+1) + memoisation(i+2)
+            return memo[i]
+
+        return memoisation(0)
